@@ -126,6 +126,25 @@
         .project-image-analytics {
             background: linear-gradient(135deg, #667eea 0%, #48bb78 100%);
         }
+        /* Mobile responsiveness improvements */
+        @media (max-width: 640px) {
+            .blob {
+                opacity: 0.4;
+            }
+            section {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            #home {
+                padding-top: 5rem;
+            }
+        }
+        html {
+            overflow-x: hidden;
+        }
+        body {
+            overflow-x: hidden;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -163,20 +182,20 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <!-- Animated Background -->
-        <div class="blob w-96 h-96 bg-purple-300 top-0 left-0"></div>
-        <div class="blob w-96 h-96 bg-indigo-300 bottom-0 right-0" style="animation-delay: 2s;"></div>
-        <div class="blob w-64 h-64 bg-pink-300 top-1/2 left-1/2" style="animation-delay: 4s;"></div>
+        <div class="blob w-48 sm:w-96 h-48 sm:h-96 bg-purple-300 top-0 left-0"></div>
+        <div class="blob w-48 sm:w-96 h-48 sm:h-96 bg-indigo-300 bottom-0 right-0" style="animation-delay: 2s;"></div>
+        <div class="blob w-32 sm:w-64 h-32 sm:h-64 bg-pink-300 top-1/2 left-1/2" style="animation-delay: 4s;"></div>
         
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 fade-in stagger-1">
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 fade-in stagger-1">
                 Hi, I'm <span class="gradient-text">Ngonidzashe</span>
             </h1>
-            <div class="text-2xl md:text-3xl text-gray-700 mb-8 fade-in stagger-2">
+            <div class="text-xl sm:text-2xl md:text-3xl text-gray-700 mb-6 sm:mb-8 fade-in stagger-2">
                 <span id="typing-text" class="typing-effect"></span>
             </div>
-            <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto fade-in stagger-3">
+            <p class="text-base sm:text-lg text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto fade-in stagger-3">
                 Experienced Data Analyst and IT Manager with a strong background in data science, web development, and systems administration. Passionate about leveraging technology to drive business insights and operational efficiency.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in stagger-4">
@@ -205,7 +224,7 @@
     <section id="about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">About Me</h2>
                 <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -236,7 +255,7 @@
     <section id="projects" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
                 <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -346,15 +365,15 @@
     <section id="experience" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Professional Experience</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Professional Experience</h2>
                 <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
             </div>
             <div class="space-y-12">
                 <!-- Experience 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-8 card-hover">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold text-gray-900">Data Analyst</h3>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Data Analyst</h3>
                             <p class="text-purple-600 font-medium">Walden Mining Company, Chegutu</p>
                         </div>
                         <div class="mt-2 md:mt-0">
@@ -382,10 +401,10 @@
                 </div>
 
                 <!-- Experience 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-8 card-hover">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold text-gray-900">Assistant IT Manager</h3>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Assistant IT Manager</h3>
                             <p class="text-purple-600 font-medium">Chegutu Municipality</p>
                         </div>
                         <div class="mt-2 md:mt-0">
@@ -413,10 +432,10 @@
                 </div>
 
                 <!-- Experience 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-8 card-hover">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                         <div>
-                            <h3 class="text-2xl font-semibold text-gray-900">Acting Public Relations & Communication Manager</h3>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Acting Public Relations & Communication Manager</h3>
                             <p class="text-purple-600 font-medium">Chegutu Municipality</p>
                         </div>
                         <div class="mt-2 md:mt-0">
@@ -450,10 +469,10 @@
     <section id="skills" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
                 <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
                 <div class="text-center">
                     <div class="w-20 h-20 hero-gradient rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-chart-line text-white text-2xl"></i>
@@ -558,7 +577,7 @@
     <section id="education" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Education & Certifications</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Education & Certifications</h2>
                 <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-12">
@@ -632,12 +651,12 @@
     <section id="contact" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
                 <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
                 <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
                     I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out! You can contact me directly via email or phone.
                 </p>
-                <div class="mt-6 flex justify-center space-x-8">
+                <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
                     <div class="text-center">
                         <i class="fas fa-envelope text-purple-600 text-2xl mb-2"></i>
                         <p class="text-gray-600">Email</p>
