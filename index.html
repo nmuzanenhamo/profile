@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngonidzashe Muzanenhamo - Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.7;
+            animation: blob 7s infinite;
+        }
+        @keyframes blob {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .typing-effect {
+            border-right: 3px solid #667eea;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { border-color: #667eea; }
+            51%, 100% { border-color: transparent; }
+        }
+        .tech-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .icon-globe::before {
+            content: "🌐";
+            font-size: 18px;
+        }
+        .icon-brain::before {
+            content: "🧠";
+            font-size: 18px;
+        }
+        .icon-code::before {
+            content: "💻";
+            font-size: 18px;
+        }
+        .icon-mobile::before {
+            content: "📱";
+            font-size: 18px;
+        }
+        .icon-database::before {
+            content: "🗄️";
+            font-size: 18px;
+        }
+        .icon-chart::before {
+            content: "📊";
+            font-size: 18px;
+        }
+        .icon-laptop::before {
+            content: "💻";
+            font-size: 18px;
+        }
+        .icon-robot::before {
+            content: "🤖";
+            font-size: 18px;
+        }
+        .icon-line::before {
+            content: "📈";
+            font-size: 18px;
+        }
+        .project-image {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .project-image-ai {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .project-image-survey {
+            background: linear-gradient(135deg, #764ba2 0%, #f64f59 100%);
+        }
+        .project-image-analytics {
+            background: linear-gradient(135deg, #667eea 0%, #48bb78 100%);
+        }
+        /* Mobile responsiveness improvements */
+        @media (max-width: 640px) {
+            .blob {
+                opacity: 0.4;
+            }
+            section {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            #home {
+                padding-top: 5rem;
+            }
+        }
+        html {
+            overflow-x: hidden;
+        }
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold gradient-text">NM</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                    <a href="#experience" class="text-gray-700 hover:text-purple-600 transition-colors">Experience</a>
+                    <a href="#projects" class="text-gray-700 hover:text-purple-600 transition-colors">Projects</a>
+                    <a href="#skills" class="text-gray-700 hover:text-purple-600 transition-colors">Skills</a>
+                    <a href="#contact" class="text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-purple-600">About</a>
+                <a href="#experience" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Experience</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Projects</a>
+                <a href="#skills" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Skills</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-purple-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Animated Background -->
+        <div class="blob w-48 sm:w-96 h-48 sm:h-96 bg-purple-300 top-0 left-0"></div>
+        <div class="blob w-48 sm:w-96 h-48 sm:h-96 bg-indigo-300 bottom-0 right-0" style="animation-delay: 2s;"></div>
+        <div class="blob w-32 sm:w-64 h-32 sm:h-64 bg-pink-300 top-1/2 left-1/2" style="animation-delay: 4s;"></div>
+        
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 fade-in stagger-1">
+                Hi, I'm <span class="gradient-text">Ngonidzashe</span>
+            </h1>
+            <div class="text-xl sm:text-2xl md:text-3xl text-gray-700 mb-6 sm:mb-8 fade-in stagger-2">
+                <span id="typing-text" class="typing-effect"></span>
+            </div>
+            <p class="text-base sm:text-lg text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto fade-in stagger-3">
+                Experienced Data Analyst and IT Manager with a strong background in data science, web development, and systems administration. Passionate about leveraging technology to drive business insights and operational efficiency.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in stagger-4">
+                <a href="#contact" class="px-8 py-3 hero-gradient text-white rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Get In Touch
+                </a>
+                <a href="#projects" class="px-8 py-3 border-2 border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300">
+                    View Projects
+                </a>
+            </div>
+            <div class="mt-12 flex justify-center space-x-6 fade-in stagger-4">
+                <a href="https://nmuzanenhamo.github.io/profile/" target="_blank" class="text-gray-600 hover:text-purple-600 transition-colors">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="https://linkedin.com/in/ngonimuza" target="_blank" class="text-gray-600 hover:text-purple-600 transition-colors">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="https://x.com/ngonexmuza" target="_blank" class="text-gray-600 hover:text-purple-600 transition-colors">
+                    <i class="fab fa-twitter text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">About Me</h2>
+                <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="images/profile-photo.jpg" alt="Ngonidzashe Muzanenhamo" class="rounded-2xl shadow-xl w-full h-auto object-cover">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Data-Driven IT Professional</h3>
+                    <p class="text-gray-600 mb-6">
+                        I am a highly skilled professional with a Bachelor of Commerce in Data Science and Informatics, a Bachelor of Commerce in Financial Intelligence, and a Diploma in Computer Engineering. Currently, I am pursuing a Masters Degree in Information Systems Management. In addition, I hold several certifications in cybersecurity, machine learning, artificial intelligence, data mining, and web development. With more than eight (8) years of professional experience, I bring a unique blend of technical expertise and financial acumen to your team.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-gray-50 rounded-lg">
+                            <div class="text-3xl font-bold gradient-text">8+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-lg">
+                            <div class="text-3xl font-bold gradient-text">15+</div>
+                            <div class="text-gray-600">Certifications</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+                <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="project-image project-image-ai">
+                        🌐 AI Website
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">AI-Powered Municipal Website</h3>
+                        <p class="text-gray-600 mb-4">Designed and developed a modern, AI-powered website for Chegutu Municipality with intelligent live chat support and dynamic ratepayer enquiry system.</p>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <div class="flex items-center px-3 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">
+                                <span class="tech-icon icon-globe"></span>
+                                <span>WordPress</span>
+                            </div>
+                            <div class="flex items-center px-3 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">
+                                <span class="tech-icon icon-brain"></span>
+                                <span>AI Integration</span>
+                            </div>
+                            <div class="flex items-center px-3 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">
+                                <span class="tech-icon icon-code"></span>
+                                <span>PHP</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://www.chegutumunicipality.co.zw" target="_blank" class="text-purple-600 hover:text-purple-700">
+                                🔗 Live Demo
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-gray-700">
+                                ℹ️ Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="project-image project-image-survey">
+                        📱 Survey App
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Property Survey App</h3>
+                        <p class="text-gray-600 mb-4">Developed a data collection application for municipal property surveys, integrating with KoboToolbox and leading the entire project lifecycle.</p>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <div class="flex items-center px-3 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">
+                                <span class="tech-icon icon-mobile"></span>
+                                <span>Mobile Development</span>
+                            </div>
+                            <div class="flex items-center px-3 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">
+                                <span class="tech-icon icon-database"></span>
+                                <span>KoboToolbox</span>
+                            </div>
+                            <div class="flex items-center px-3 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">
+                                <span class="tech-icon icon-chart"></span>
+                                <span>Data Management</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-purple-600 hover:text-purple-700">
+                                🔗 Case Study
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-gray-700">
+                                ℹ️ Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="project-image project-image-analytics">
+                        📊 Analytics
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Mining Data Analytics Platform</h3>
+                        <p class="text-gray-600 mb-4">Built predictive models and interactive dashboards for geological and operational data analysis at Walden Mining Company.</p>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <div class="flex items-center px-3 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">
+                                <span class="tech-icon icon-laptop"></span>
+                                <span>Python</span>
+                            </div>
+                            <div class="flex items-center px-3 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">
+                                <span class="tech-icon icon-robot"></span>
+                                <span>Machine Learning</span>
+                            </div>
+                            <div class="flex items-center px-3 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">
+                                <span class="tech-icon icon-line"></span>
+                                <span>Data Visualization</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-purple-600 hover:text-purple-700">
+                                🔗 Portfolio
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-gray-700">
+                                ℹ️ Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Professional Experience</h2>
+                <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
+            </div>
+            <div class="space-y-12">
+                <!-- Experience 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-8 card-hover">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Data Analyst</h3>
+                            <p class="text-purple-600 font-medium">Walden Mining Company, Chegutu</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">Jul 2024 - Present</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Collect and manage large datasets ensuring data quality and integrity</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Analyze geological and operational data to identify trends and patterns</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Build predictive models using statistical and machine learning techniques</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Design interactive dashboards for data visualization and reporting</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-8 card-hover">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Assistant IT Manager</h3>
+                            <p class="text-purple-600 font-medium">Chegutu Municipality</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">Jan 2017 - Jun 2024</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Develop and implement IT policies and procedures</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Configure servers and conduct system maintenance and backups</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Diagnose and resolve hardware/software issues as primary IT support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Manage user access, install/update software, and upgrade hardware</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-8 card-hover">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Acting Public Relations & Communication Manager</h3>
+                            <p class="text-purple-600 font-medium">Chegutu Municipality</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm">Apr 2023 - Jun 2024</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Speak on behalf of the Council and CEO in official communications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Ensure effective internal and external communication strategies</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Oversee Council events and stakeholder engagement activities</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-purple-600 mt-1 mr-3"></i>
+                            <span>Manage website optimization and analyze media coverage</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
+                <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 hero-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Data Analysis</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Python/ML</span>
+                            <span class="text-purple-600">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="hero-gradient h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 hero-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-globe text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Web Development</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>WordPress/PHP</span>
+                            <span class="text-purple-600">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="hero-gradient h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 hero-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-server text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">System Administration</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Azure/Network</span>
+                            <span class="text-purple-600">88%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="hero-gradient h-2 rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 hero-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Cyber Security</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>Firewall/Security</span>
+                            <span class="text-purple-600">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="hero-gradient h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Skills Grid -->
+            <div class="mt-12 grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-gray-900 mb-3">Microsoft Technologies</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Microsoft 365</span>
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Power Automate</span>
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Power Apps</span>
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">SharePoint</span>
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Azure</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-gray-900 mb-3">Enterprise Systems</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">PROMUN ERP</span>
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Belina Payroll</span>
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Sophos XG</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="font-semibold text-gray-900 mb-3">Soft Skills</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Self-motivated</span>
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Innovative</span>
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Fast Learner</span>
+                        <span class="px-3 py-1 bg-white text-gray-700 rounded-full text-sm">Hardworking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section id="education" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Education & Certifications</h2>
+                <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Certifications -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Professional Certifications</h3>
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-purple-600">
+                            <h4 class="font-semibold text-gray-900">Front End Web Development and PHP</h4>
+                            <p class="text-gray-600 text-sm">Web Development Certification</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-purple-600">
+                            <h4 class="font-semibold text-gray-900">Cyber Security: White-Hat Ethical Hacking</h4>
+                            <p class="text-gray-600 text-sm">Security Certification</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-purple-600">
+                            <h4 class="font-semibold text-gray-900">Practical Machine Learning with Python</h4>
+                            <p class="text-gray-600 text-sm">Data Science Certification</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-purple-600">
+                            <h4 class="font-semibold text-gray-900">Data Mining with Python</h4>
+                            <p class="text-gray-600 text-sm">Data Analysis Certification</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-purple-600">
+                            <h4 class="font-semibold text-gray-900">PROMUN ERP System</h4>
+                            <p class="text-gray-600 text-sm">Enterprise Resource Planning Certification</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Languages -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Languages</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-gray-900">Shona</span>
+                                <span class="text-purple-600">Native</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="hero-gradient h-3 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium text-gray-900">English</span>
+                                <span class="text-purple-600">Professional</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3">
+                                <div class="hero-gradient h-3 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Info -->
+                    <div class="mt-8 bg-purple-50 rounded-lg p-6">
+                        <h4 class="font-semibold text-gray-900 mb-3">Professional Summary</h4>
+                        <p class="text-gray-600">
+                            With over 8 years of experience in IT management, data analysis, and web development, 
+                            I bring a comprehensive skill set that combines technical expertise with business acumen. 
+                            My background includes managing IT infrastructure, developing data-driven solutions, 
+                            and leading digital transformation initiatives.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 hero-gradient mx-auto rounded"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out! You can contact me directly via email or phone.
+                </p>
+                <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="text-center">
+                        <i class="fas fa-envelope text-purple-600 text-2xl mb-2"></i>
+                        <p class="text-gray-600">Email</p>
+                        <p class="text-gray-900 font-medium">
+                            <script>
+                                document.write('<a href="mailto:' + ['ngonexm', '@gmail.com'].join('') + '" class="text-gray-900 hover:text-purple-600 transition-colors">ngonexm[at]gmail.com</a>');
+                            </script>
+                            <noscript>ngonexm[at]gmail.com</noscript>
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-phone text-purple-600 text-2xl mb-2"></i>
+                        <p class="text-gray-600">Phone</p>
+                        <p class="text-gray-900 font-medium">+263 77 308 8800</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-map-marker-alt text-purple-600 text-2xl mb-2"></i>
+                        <p class="text-gray-600">Location</p>
+                        <p class="text-gray-900 font-medium">Chegutu, Zimbabwe</p>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <form id="contact-form" class="bg-white rounded-2xl shadow-xl p-8">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition-all" placeholder="Your Name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition-all" placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                        <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition-all" placeholder="How can I help?">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition-all resize-none" placeholder="Your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 hero-gradient text-white rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 font-medium">
+                        Send Message
+                    </button>
+                </form>
+                <div id="form-message" class="mt-4 text-center hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://nmuzanenhamo.github.io/profile/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/ngonimuza" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://x.com/ngonexmuza" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="https://instagram.com/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400">
+                    2026 Ngonidzashe Muzanenhamo. All rights reserved.
+                </p>
+                <p class="text-gray-500 text-sm mt-2">
+                    Built with passion and lots of coffee 
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

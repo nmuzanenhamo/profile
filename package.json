@@ -1,0 +1,22 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "A beautiful personal website with modern UI",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/index.html",
+    "build": "echo 'Build complete - files are ready for deployment'",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "personal-website",
+    "portfolio",
+    "modern-ui",
+    "responsive"
+  ],
+  "author": "Ngonidzashe Muzanenhamo",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
