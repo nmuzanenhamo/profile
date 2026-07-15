@@ -2,9 +2,11 @@
 const typingTexts = [
     "Data Analyst",
     "IT Manager", 
-    "Web Developer",
+    "Software Developer",
     "Data Scientist",
-    "System Administrator"
+    "System Administrator",
+    "Cyber Security Specialist",
+    "Cloud Computing Enthusiast"
 ];
 
 let textIndex = 0;
@@ -81,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Contact form submission
+    // Contact form submission via Formspree
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
     
@@ -109,9 +111,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Simulate form submission (in real app, this would send to a server)
-            showFormMessage('Thank you for your message! I\'ll get back to you soon.', 'success');
-            contactForm.reset();
+            // Submit to Formspree (replace YOUR_FORM_ID with your actual Formspree form ID)
+            showFormMessage('Sending your message...', 'success');
+            
+            fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showFormMessage('Thank you for your message! I\'ll get back to you soon.', 'success');
+                    contactForm.reset();
+                } else {
+                    showFormMessage('Oops! Something went wrong. Please try emailing me directly.', 'error');
+                }
+            })
+            .catch(() => {
+                showFormMessage('Oops! Something went wrong. Please try emailing me directly.', 'error');
+            });
         });
     }
     
@@ -139,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Active navigation highlighting
+    // Active navigation highlighting (desktop + mobile)
     window.addEventListener('scroll', function() {
         const sections = document.querySelectorAll('section[id]');
         const scrollY = window.pageYOffset;
@@ -150,21 +168,46 @@ document.addEventListener('DOMContentLoaded', function() {
             const sectionId = section.getAttribute('id');
             
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                // Remove active class from all nav links
+                // Remove active class from all nav links (desktop + mobile)
                 document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-                    link.classList.remove('text-purple-600');
+                    link.classList.remove('text-purple-600', 'font-semibold');
                     link.classList.add('text-gray-700');
                 });
                 
-                // Add active class to current section link
-                const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
-                if (activeLink) {
-                    activeLink.classList.remove('text-gray-700');
-                    activeLink.classList.add('text-purple-600');
-                }
+                // Add active class to current section links
+                document.querySelectorAll(`nav a[href="#${sectionId}"]`).forEach(link => {
+                    link.classList.remove('text-gray-700');
+                    link.classList.add('text-purple-600', 'font-semibold');
+                });
             }
         });
+        
+        // Scroll-to-top button visibility
+        const scrollBtn = document.getElementById('scroll-to-top');
+        if (scrollBtn) {
+            if (scrollY > 300) {
+                scrollBtn.classList.remove('opacity-0', 'invisible');
+                scrollBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollBtn.classList.add('opacity-0', 'invisible');
+                scrollBtn.classList.remove('opacity-100', 'visible');
+            }
+        }
     });
+    
+    // Scroll-to-top button click
+    const scrollTopBtn = document.getElementById('scroll-to-top');
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+    
+    // Dynamic footer year
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
     
     // Parallax effect for hero section
     window.addEventListener('scroll', function() {
