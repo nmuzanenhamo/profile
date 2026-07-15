@@ -111,10 +111,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Submit to Formspree (replace YOUR_FORM_ID with your actual Formspree form ID)
+            // Submit to Formspree
             showFormMessage('Sending your message...', 'success');
             
-            fetch('https://formspree.io/f/YOUR_FORM_ID', {
+            fetch('https://formspree.io/f/meeyodwq', {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }
